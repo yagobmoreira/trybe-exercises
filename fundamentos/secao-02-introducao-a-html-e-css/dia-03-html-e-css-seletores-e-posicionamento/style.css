@@ -1,16 +1,43 @@
-h1, p {
-    text-align: center;
+div:hover {
+    border: 3px solid black;
 }
 
-li:hover, ol:hover {
-    background-color: blueviolet;
+div:nth-of-type(1){
+    color: green;
+}
+div:nth-of-type(2){
+    color: yellow;
+}
+div:nth-of-type(3){
+    color: brown;
+}
+div:nth-of-type(4){
+    color: black;
+}
+div:nth-of-type(5){
+    color: darkcyan;
 }
 
-li:active {
-    font-family: monospace;
-    
+div:nth-of-type(1) > h3 {
+    color: green;
+}
+div:nth-of-type(2) > h3 {
+    font-size: 40px;
+}
+div:nth-of-type(3) > h3 {
+    font-family: sans-serif;
+}
+div:nth-of-type(4) > h3 {
+    padding: 20px;
+    font-size: 20px;
+}
+div:nth-of-type(5) > h3 {
+    max-width: 60%;
+}
+div:nth-of-type(3){
+    width: 90px;
 }
 
-li {
-    list-style: none;
+div:nth-child(odd) h3{
+    font-style: italic;
 }
