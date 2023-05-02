@@ -1,9 +1,9 @@
-let num1 = 3;
-let num2 = 4;
-let num3 = 5;
+let num1 = 4;
+let num2 = 6;
+let num3 = 8;
 
-if (num1 % 2 === 0 || num2 % 2 === 0 || num3 % 2 === 0){
-  console.log('Algum número é par.');
+if (num1 % 2 === 1 || num2 % 2 === 1 || num3 % 2 === 1){
+  console.log(true);
 } else {
-  console.log('Nenhum número é par.');
+  console.log(false);
 }
