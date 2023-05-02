@@ -1,9 +1,13 @@
-let num1 = 4;
-let num2 = 6;
-let num3 = 8;
+let valorCusto = 80;
+let impostoCusto = 0.2*valorCusto;
+let valorCustoTotal = valorCusto + impostoCusto;
+let valorVenda = 140;
+let lucro = valorVenda - valorCustoTotal;
+let numVendas = 1000;
 
-if (num1 % 2 === 1 || num2 % 2 === 1 || num3 % 2 === 1){
-  console.log(true);
+if (valorCusto >= 0){
+  lucroTotal = lucro*numVendas;
 } else {
-  console.log(false);
+  console.log('Erro');
 }
+console.log(lucroTotal);
