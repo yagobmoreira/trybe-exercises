@@ -48,7 +48,8 @@ function orderModifier(order) {
   let keysPizza = Object.keys(order.order['pizza']);
   let keysDrinks = order.order.drinks.coke.type;
   // console.log(keys);
-  console.log('Olá, ' + order['name']+', o valor total de seu pedido de '+keysPizza[0]+ ', '+keysPizza[1]+' e '+keysDrinks+' é '+'R$ '+newTotal+',00');
+  console.log(`Olá, ${newBuyer}, o valor total do seu pedido de ${keysPizza[0]}, ${keysPizza[1]} e ${keysDrinks} é R$ ${newTotal},00`);
+  // console.log('Olá, ' + order['name']+', o valor total de seu pedido de '+keysPizza[0]+ ', '+keysPizza[1]+' e '+keysDrinks+' é '+'R$ '+newTotal+',00');
 }
 
 orderModifier(order);
