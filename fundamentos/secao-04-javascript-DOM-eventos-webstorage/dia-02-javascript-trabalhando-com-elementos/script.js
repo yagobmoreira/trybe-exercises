@@ -44,5 +44,11 @@ const whereAreYou = document.querySelector('#where-are-you');
 const h2 = whereAreYou.firstElementChild;
 whereAreYou.removeChild(h2);
 
+const cars = document.getElementById('cars');
+console.log(cars);
 
+
+document.getElementById('cars').firstElementChild.remove();
+
+console.log(document.getElementById('stark_childs').lastElementChild.innerText);
 
