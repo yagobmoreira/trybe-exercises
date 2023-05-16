@@ -40,7 +40,7 @@ myWebpage.addEventListener('dblclick',(evento) => {
 const changeColor = () => {
   myWebpage.addEventListener('mouseout', (evento) => {
     console.log(evento.target);
-    evento.target.style.color = 'blue';
+    evento.target.style.color = 'yellow';
   })
 }
 changeColor();
