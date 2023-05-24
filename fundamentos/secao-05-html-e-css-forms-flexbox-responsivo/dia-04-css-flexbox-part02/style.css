@@ -38,3 +38,10 @@ body {
   list-style: none;
   margin-right: 10px;
 }
+
+header section {
+  order: 1;
+}
+header nav {
+  order: 2;
+}
