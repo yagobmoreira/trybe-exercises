@@ -90,3 +90,24 @@ body {
     flex-direction: column;
   }
 }
+
+@media screen and (max-width: 600px) {
+  #aside {
+    display: none;
+  }
+
+  #content img {
+    max-width: 100%;
+  }
+
+  #navigation ul {
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+  }
+
+  #header {
+    position: fixed;
+    width: 100%;
+  }
+}
