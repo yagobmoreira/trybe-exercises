@@ -47,5 +47,23 @@ const people = [
 
 const verifyAges = (arr, age) => arr.every((obj) => obj.age >= age);
 
-console.log(verifyAges(people, 18));
-console.log(verifyAges(people, 14));
+// console.log(verifyAges(people, 18));
+// console.log(verifyAges(people, 14));
+
+const pessoas = [
+  { nome: 'Joana', idade: 37 },
+  { nome: 'Ana', idade: 25 },
+  { nome: 'João', idade: 32 },
+  { nome: 'Aline', idade: 28 },
+];
+// Exemplo .forEach
+pessoas.forEach((pessoa) => console.log(`Nome: ${pessoa.nome}`));
+
+// Exemplo .find
+pessoas.find((pessoa) => pessoa.nome === 'Aline');
+
+// Exemplo .some
+pessoas.some((pessoa) => pessoa.idade > 30);
+
+// Exemplo .every
+pessoas.every((pessoa) => pessoa.idade > 30);
