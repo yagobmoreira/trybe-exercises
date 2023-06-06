@@ -22,3 +22,23 @@ const checkLottery = (num, callback) => {
   return callback(num, sorteio) ? `Parabéns você ganhou` : `Tente novamente`;
 }
 console.log(checkLottery(5, checkNumbers));
+
+//Corretor automático de exame
+const RIGHT_ANSWERS = ['A', 'C', 'B', 'D', 'A', 'A', 'D', 'A', 'D', 'C'];
+const STUDENT_ANSWERS = ['A', 'N.A', 'B', 'D', 'A', 'C', 'N.A', 'A', 'D', 'B'];
+
+const checker = (gabarito, respostas) => {
+  return (respostas === 'N.A') ?  0 
+    :(gabarito === respostas) ?  1 
+    : -0.5;
+}
+
+const corretor = (gabarito, respostas, checker) => {
+  let contador = 0;
+  for (let index = 0; index < gabarito.length; index += 1) {
+    let resultado = checker(gabarito[index], respostas[index])
+    contador += resultado;
+  }
+  return `Resultado final: ${contador} pontos`;
+}
+console.log(corretor(RIGHT_ANSWERS, STUDENT_ANSWERS, checker));
