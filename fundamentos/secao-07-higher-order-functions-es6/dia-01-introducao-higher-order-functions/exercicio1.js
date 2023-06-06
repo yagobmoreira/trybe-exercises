@@ -16,9 +16,9 @@ const newEmployees = (gerarEmail) => {
 //Sorteador da loteria
 const gerarNumero = () => Math.floor(Math.random() * (5 - 1 + 1)) + 1 //gera numero aleatorio entre 1 e 5
 const checkNumbers = (num1, num2) => num1 === num2; //Retorna true se num1 é igual a num2 
-const checkLottery = (num) => {
+const checkLottery = (num, callback) => {
   const sorteio = gerarNumero();
   console.log(`Número sorteado: ${sorteio}`);
-  return checkNumbers(num, sorteio) ? `Parabéns você ganhou` : `Tente novamente`;
+  return callback(num, sorteio) ? `Parabéns você ganhou` : `Tente novamente`;
 }
-console.log(checkLottery(5));
+console.log(checkLottery(5, checkNumbers));
