@@ -4,9 +4,14 @@
   "description": "gerador de senhas seguras",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite --open"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "nanoid": "^4.0.2",
+    "vite": "^4.3.9"
+  },
+  "type": "module"
 }
