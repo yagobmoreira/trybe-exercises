@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validador de dados</title>
+</head>
+<body>
+  <main>
+    <h2>Validador de campos</h2>
+    <form action="" id="form">
+      <input id="input_area" type="text" placeholder="Insira um valor aqui">
+      <select name="dropdown" id="dropdownList">
+        <option value="email">Email</option>
+        <option value="integer">Número inteiro</option>
+        <option value="creditCard">Cartão de Crédito</option>
+        <option value="data">Data</option>
+        <option value="time">Horário</option>
+      </select>
+      <button type="submit">Validar</button>
+    </form>
+    <p>Digite o valor, escolha a opção e clique em validar</p>
+  </main>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>
