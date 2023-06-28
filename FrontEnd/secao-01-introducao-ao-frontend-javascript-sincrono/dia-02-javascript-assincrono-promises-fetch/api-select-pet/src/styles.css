@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+img {
+  border-radius: 5px;
+  box-shadow: 3px 3px 12px #333;
+  width: 100%;
+  padding: 10px;
+}
+
+
+#petCard {
+  margin-top: 10px;
+  max-width: 600px;
+  max-height: 800px;
+}
+
+#btnSection {
+  display: flex;
+  justify-content: space-evenly;
+  width: 600px;
+}
