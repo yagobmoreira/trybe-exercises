@@ -1,10 +1,15 @@
 import Button from './components/Button'
-import './App.css'
+import Input from './components/Input'
+// import './App.css'
 
 function App() {
+  function handleChange() {
+    alert('Você digitou algo');
+  }
 
   return (
     <>
+      <Input onChange={ handleChange } />
       <Button />
     </>
   )
