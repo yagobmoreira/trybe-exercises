@@ -1,6 +1,6 @@
 function Button() {
   function handleClick() {
-    alert('Meu primeiro event handler com React')
+    alert('Clicou');
   }
 
   return (    

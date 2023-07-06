@@ -1,12 +1,16 @@
-type InputProps = {
-  onChange: () => void
-}
 
-function Input({ onChange }: InputProps) {
+function Input() {
 
-  return (
-    <input onChange={onChange} type="text" name="" id="" placeholder="Digite algo"/>
-  )
+    function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+      alert(event.target.value);
+    }
+  
+    return (
+      <>
+        <h1>Digite o seu primeiro nome:</h1>
+        <input name="firstName" onChange={(event) => handleChange(event)} />
+      </>
+    );
 
 }
 
