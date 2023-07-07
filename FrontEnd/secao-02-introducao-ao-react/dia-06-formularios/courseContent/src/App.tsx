@@ -6,31 +6,40 @@ function App() {
   const [email, setEmail] = useState("");
   const [schooling, setSchooling] = useState("Médio");
   const [resume, setResume] = useState("");
+  const [terms, setTerms] = useState(false);
+  const [error, setError] = useState(false);
 
   function resetForm() {
-    setName('');
-    setEmail('');
-    setSchooling('');
-    setResume('');
+    setName("");
+    setEmail("");
+    setSchooling("");
+    setResume("");
   }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    alert(
-      `Nome: ${name}\nemail: ${email}\nEscolaridade: ${schooling}\nExperiências: ${resume}`
-    );
-    resetForm();
+    if (terms) {
+      alert(
+        `Nome: ${name}\nemail: ${email}\nEscolaridade: ${schooling}\nExperiências: ${resume}`
+      );
+      resetForm();
+    } else {
+      setError(true);
+    }
   }
   return (
-
     <form onSubmit={(event) => handleSubmit(event)}>
       <label>
         Nome
-        <input value={name} onChange={({ target }) => setName(target.value)} />
+        <input
+          required 
+          value={name} 
+          onChange={({ target }) => setName(target.value)} />
       </label>
       <label>
         E-mail
         <input
+          required
           value={email}
           onChange={({ target }) => setEmail(target.value)}
         />
@@ -54,6 +63,20 @@ function App() {
         />
       </label>
       <button>Enviar</button>
+      {error && (
+        <h4>
+          Você precisa aceitar os termos e condições para poder enviar o
+          currículo
+        </h4>
+      )}
+      <label>
+        Aceito os termos e condições
+        <input
+          type="checkbox"
+          checked={terms}
+          onChange={() => setTerms((prevTerms) => !prevTerms)}
+        />
+      </label>
     </form>
   );
 }
