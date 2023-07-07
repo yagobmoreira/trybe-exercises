@@ -2,27 +2,43 @@ import { useState } from "react";
 import "./App.css";
 
 function App() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [schooling, setSchooling] = useState("Médio");
-  const [resume, setResume] = useState("");
+
   const [terms, setTerms] = useState(false);
   const [error, setError] = useState(false);
+  const [formInfo, setFormInfo] = useState({
+    name: '',
+    email: '',
+    schooling: 'Médio',
+    resume: '',
+  });
+  
+  function handleChange(event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) {
+    const { name, value } = event.target;
+    setFormInfo({
+      ...formInfo,
+      [name]: value,
+    });
+  }
 
   function resetForm() {
-    setName("");
-    setEmail("");
-    setSchooling("");
-    setResume("");
+    setFormInfo({
+      name: '',
+      email: '',
+      schooling: 'Médio',
+      resume: '',
+    })
   }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (terms) {
+      
       alert(
-        `Nome: ${name}\nemail: ${email}\nEscolaridade: ${schooling}\nExperiências: ${resume}`
+        `Nome: ${formInfo.name}\nemail: ${formInfo.email}\nEscolaridade: ${formInfo.schooling}\nExperiências: ${formInfo.resume}`
       );
       resetForm();
+      setError(false);
+      setTerms(false);
     } else {
       setError(true);
     }
@@ -32,23 +48,26 @@ function App() {
       <label>
         Nome
         <input
-          required 
-          value={name} 
-          onChange={({ target }) => setName(target.value)} />
+          required
+          name="name"
+          value={formInfo.name} 
+          onChange={handleChange} />
       </label>
       <label>
         E-mail
         <input
           required
-          value={email}
-          onChange={({ target }) => setEmail(target.value)}
+          name="email"
+          value={formInfo.email}
+          onChange={handleChange}
         />
       </label>
       <label>
         Escolaridade
         <select
-          value={schooling}
-          onChange={({ target }) => setSchooling(target.value)}
+          name="schooling"
+          value={formInfo.schooling}
+          onChange={handleChange}
         >
           <option value="Médio">Médio</option>
           <option value="Superior">Superior</option>
@@ -58,8 +77,9 @@ function App() {
       <label>
         Resumo das experiências
         <textarea
-          value={resume}
-          onChange={({ target }) => setResume(target.value)}
+          name="resume"
+          value={formInfo.resume}
+          onChange={handleChange}
         />
       </label>
       <button>Enviar</button>
