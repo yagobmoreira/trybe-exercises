@@ -1,35 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
+import ValidEmail from './components/ValidEmail';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [email, setEmail] = useState('');
+  const [saveEmail, setSaveEmail] = useState('');
+
+  const handleSendEmail = () => {
+    setSaveEmail(email);
+    setEmail('');
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="App">
+      <div className="form-container">
+        <label htmlFor="id-email">
+          Email:
+          <input
+            id="id-email"
+            type="email"
+            onChange={ (e) => setEmail(e.target.value) }
+            value={ email }
+          />
+        </label>
+        <input
+          id="btn-send"
+          type="button"
+          data-testid="id-send"
+          value="Enviar"
+          onClick={ handleSendEmail }
+        />
+        <input
+          id="btn-back"
+          type="button"
+          value="Voltar"
+          onClick={ () => setSaveEmail('') }
+        />
+         <ValidEmail email={ saveEmail } />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
