@@ -1,25 +1,31 @@
 // App.tsx
 import { useState, useEffect } from 'react';
 import './App.css';
+import fetchJoke from './utils/fetchJoke';
 
 function App() {
   const [joke, setJoke] = useState('');
 
   useEffect(() => {
-    async function fetchJoke() {
-      const API_URL = 'https://icanhazdadjoke.com/';
-      const REQUEST_CONFIG = { headers: { Accept: 'application/json' } };
-      const response = await fetch(API_URL, REQUEST_CONFIG);
-      const data = await response.json();
-      // console.log(data)
+    async function getJoke() {
+      const data =  await fetchJoke();
       setJoke(data.joke)
     }
-    fetchJoke();
+    getJoke();
   }, []);
+
+  async function handleClick() {
+    const data =  await fetchJoke();
+    setJoke(data.joke)
+  }
 
   return (
     <div className="App">
       <p>{joke}</p>
+      <button 
+      onClick={handleClick}>
+        New joke
+      </button>
     </div>
   );
 }
