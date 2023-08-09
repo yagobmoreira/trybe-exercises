@@ -1,6 +1,6 @@
 function Home() {
   return (
-    <div>Você está na pagina inicial</div>
+    <div>Você está na página Início</div>
   )
 }
 
