@@ -4,3 +4,8 @@ export const actionCreator = (increment = 1) => {
     payload: increment,
   }
 }
+
+
+export const actionCounterClicks = {
+  type: 'COUNTER_CLICKS',
+}
