@@ -3,8 +3,8 @@ import { REQUEST_STARTED, REQUEST_SUCCESSFUL, REQUEST_FAILED } from "../actions"
 
 const INITIAL_STATE = {
   isFetching: false,
-  character: {
-    name: '',
+  characters: [{
+    name: 'Jon Snow',
     gender: '',
     culture: '',
     born: '',
@@ -12,13 +12,13 @@ const INITIAL_STATE = {
     titles: [''],
     aliases: [''],
     allegiances: [''],
-  },
-  error: ''
+  }],
+  error: '',
 }
 
 type ActionType = {
   type: string,
-  payload: StateType | StateType[],
+  payload: StateType[],
 }
 
 const rootReducer = (state: StateType = INITIAL_STATE, action: ActionType) => {
@@ -31,14 +31,14 @@ const rootReducer = (state: StateType = INITIAL_STATE, action: ActionType) => {
     case REQUEST_SUCCESSFUL:
       return {
         ...state,
-        character: action.payload,
+        characters: [...action.payload],
         isFetching: false,
       }
     case REQUEST_FAILED:
       return {
         ...state,
-        error: action.payload,
         isFetching: false,
+        error: action.payload,
       }
     default:
       return state;

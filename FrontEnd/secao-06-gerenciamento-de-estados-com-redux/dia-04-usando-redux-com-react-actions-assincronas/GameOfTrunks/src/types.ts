@@ -14,7 +14,7 @@ export type CharacterType = {
 
 export type StateType = {
   isFetching: boolean,
-  character: CharacterType,
+  characters: CharacterType[],
   error: string,
 }
 
