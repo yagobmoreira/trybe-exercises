@@ -30,8 +30,8 @@ export const fetchCharacter = (character: string) => {
       dispatch(requestStarted());
       const response = await fetch(`https://www.anapioficeandfire.com/api/characters?name=${character}`);
       const data = await response.json();
-      console.log(data[0])
-      dispatch(requestSuccessful(data[0]));
+      console.log(data)
+      dispatch(requestSuccessful(data));
     }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     catch (error: any) {
