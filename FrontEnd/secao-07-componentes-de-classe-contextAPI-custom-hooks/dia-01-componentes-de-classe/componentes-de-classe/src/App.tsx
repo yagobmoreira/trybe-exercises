@@ -1,15 +1,16 @@
 import React from 'react'
+import Title from './components/Title';
 import './App.css'
 
 class App extends React.Component {
   handleClick = () => {
     alert('Clicou!');
   }
-  
+
   render() {
     return (
       <div className="App">
-        <button onClick={this.handleClick}>Clique!</button>
+        <Title titleMessage='Olá mundo !'/>
       </div>
     )
   }
