@@ -2,10 +2,14 @@ import React from 'react'
 import './App.css'
 
 class App extends React.Component {
+  handleClick = () => {
+    alert('Clicou!');
+  }
+  
   render() {
     return (
       <div className="App">
-        <h1>React App</h1>
+        <button onClick={this.handleClick}>Clique!</button>
       </div>
     )
   }
