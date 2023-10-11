@@ -13,8 +13,19 @@ services:
       - database__connection__database=ghost
     depends_on:
       - "db"
+    networks:
+      - my-network
   db:
     image: mysql:5.7.40
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=password
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - my-network
+
+volumes:
+  db-data:
+networks:
+  my-network:
