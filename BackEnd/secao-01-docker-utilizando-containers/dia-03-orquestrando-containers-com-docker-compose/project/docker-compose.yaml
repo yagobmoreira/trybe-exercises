@@ -2,14 +2,16 @@ version: '3'
 services:
   frontend:
     build: frontend/    # Especificamos o contexto, ou seja, a pasta onde está o Dockerfile.
-    restart: on-failure # Reiniciamos o container em caso de falha.
+    restart: always # Reiniciamos o container sempre.
     ports: 
       - 3000:3000
     depends_on:
       - backend # Especificamos a dependência do serviço backend.
+    volumes:
+      - ./frontend/src:/frontend/src # Montamos um volume para o diretório src.
   backend:
     build: backend/     # Mesmo caso aqui.
-    restart: on-failure
+    restart: always
     ports: 
       - 3001:3001
     environment:
@@ -18,4 +20,4 @@ services:
       - database # Especificamos a dependência do serviço database.
   database:
     image: betrybe/docker-compose-example-database:v1    # Especificamos a Imagem Docker diretamente.
-    restart: on-failure
+    restart: always
