@@ -9,6 +9,8 @@ services:
       - backend # Especificamos a dependência do serviço backend.
     volumes:
       - ./frontend/src:/frontend/src # Montamos um volume para o diretório src.
+    networks:
+      - rede-virtual-1 # Especificamos a rede virtual.
   backend:
     build: backend/     # Mesmo caso aqui.
     restart: always
@@ -18,6 +20,18 @@ services:
       - DB_HOST=database # Especificamos a variável de ambiente DB_HOST.
     depends_on:
       - database # Especificamos a dependência do serviço database.
+    networks:
+      - rede-virtual-1
+      - rede-virtual-2
   database:
     image: betrybe/docker-compose-example-database:v1    # Especificamos a Imagem Docker diretamente.
     restart: always
+    networks:
+      - rede-virtual-2
+      
+volumes:
+  dados-do-banco:
+
+networks:
+  rede-virtual-1:
+  rede-virtual-2:
