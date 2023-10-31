@@ -6,6 +6,7 @@
   "scripts": {
     "sync": "node readFileSync.js",
     "async": "node readFileAsync.js",
+    "write": "node writeFileAsync.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
