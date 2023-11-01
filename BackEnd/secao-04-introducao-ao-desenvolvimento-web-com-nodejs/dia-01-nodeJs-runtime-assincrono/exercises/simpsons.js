@@ -19,8 +19,32 @@ const readCharacterById = async (id) => {
   }
 };
 
+// Função para remover os caracteres com id = 6 e id = 10
+const filterSimpsons = async () => {
+  try {
+    const data = await fs.readFile('./data/simpsons.json', 'utf8');
+    const characters = JSON.parse(data);
+    const filteredCharacters = characters
+      .filter((character) => character.id !== '6' && character.id !== '10');
+    await fs.writeFile('./data/simpsons.json', JSON.stringify(filteredCharacters));
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+const createNewSimpsonsJson = async () => {
+  try {
+    const fileContent = await fs.readFile('./data/simpsons.json', 'utf8');
+    const simpsons = JSON.parse(fileContent);
+    const newSimpsons = simpsons
+      .filter((character) => Number(character.id) >= 1 && Number(character.id) <= 4);
+    await fs.writeFile('./data/simpsonsFamily.json', JSON.stringify(newSimpsons));
+  } catch (err) {
+    console.error(err);
+  }
+}
+
 const main = async () => {
-  const simpson = await readCharacterById('2');
-  console.log(simpson);
+  await createNewSimpsonsJson();
 }
 main();
