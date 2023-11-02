@@ -5,7 +5,7 @@ const app = express();
 
 app.use(express.json());
 
-app.get('/movies/:id', async (req, res) => {
+app.get('/movies/:id([0-9]+)', async (req, res) => {
   const { id } = req.params;
   const movies = await readData();
   const findTeam = movies.find((film) => film.id === Number(id));
@@ -48,5 +48,19 @@ app.delete('/movies/:id', async (req, res) => {
   return res.status(200).end();
 });
 
-
+app.get('/movies/search', async (req, res) => {
+  try {
+    const { q } = req.query;
+    const movies = await readData();
+    if (q) {
+      const filteredMovies = movies
+        .filter((film) => film.movie.toLowerCase()
+        .includes(q.toLowerCase()));
+      return res.status(200).json({ filteredMovies });
+    }
+    res.status(200).end();
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+});
 module.exports = app;
