@@ -16,4 +16,8 @@ const main = async () => {
   const data = await readData();
   console.log(data);
 }
-main();
+// main();
+
+module.exports = {
+  readData
+}
