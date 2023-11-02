@@ -27,7 +27,26 @@ app.post('/movies', async (req, res) => {
   const newMovie = { id, movie, price };
   movies.push(newMovie);
   return res.status(201).json({ newMovie });
-})
+});
+
+app.put('/movies/:id', async (req, res) => {
+  const { id } = req.params;
+  const { movie: updatedMovie, price: updatedPrice } = req.body;
+  const movies = await readData();
+  const movieIndex = movies.findIndex((movie) => movie.id === Number(id));
+  const upMovie = { id: Number(id), updatedMovie, updatedPrice };
+  movies[movieIndex] = upMovie;
+  return res.status(204).end();
+});
+
+app.delete('/movies/:id', async (req, res) => {
+  const { id } = req.params;
+  const movies = await readData();
+  const movieIndex = movies.findIndex((movie) => movie.id === Number(id));
+  movies.splice(movieIndex, 1);
+
+  return res.status(200).end();
+});
 
 
 module.exports = app;
