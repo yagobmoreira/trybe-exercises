@@ -123,6 +123,7 @@ describe('Testando a API Cacau Trybe', () => {
       });
     });
   });
+
   describe('Usando o método GET em /chocolates/total', function () {
     it('Retorna a quantidade de total de chocolates cadastrados', async function () {
       const response = await chai
@@ -134,5 +135,38 @@ describe('Testando a API Cacau Trybe', () => {
         totalChocolates: 4
       });
     })
-  })
+  });
+
+  describe('Usando o método GET em /chocolates/search', function () {
+    it('Retorna o(s) chocolate(s) de acordo com a query', async function () {
+      const response = await chai
+        .request(app)
+        .get('/chocolates/search?name=Mo')
+
+      expect(response.status).to.be.equal(200);
+      expect(response.body).to.deep.equal([
+        {
+          "id": 3,
+          "name": "Mon Chéri",
+          "brandId": 2
+        },
+        {
+          "id": 4,
+          "name": "Mounds",
+          "brandId": 3
+        }
+      ]);
+    });
+    
+    it('Retorna status 404 com um array vazio', async function () {
+      const response = await chai
+        .request(app)
+        .get('/chocolates/search?name=ZZZ')
+
+      expect(response.status).to.be.equal(404);
+      expect(response.body).to.deep.equal([]);
+    })
+  });
+
+
 });
