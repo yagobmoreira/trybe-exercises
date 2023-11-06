@@ -132,7 +132,7 @@ describe('Testando a API Cacau Trybe', () => {
       expect(response.status).to.be.equal(200);
       expect(response.body).to.deep.equal({
         totalChocolates: 4
-      })
+      });
     })
   })
 });
