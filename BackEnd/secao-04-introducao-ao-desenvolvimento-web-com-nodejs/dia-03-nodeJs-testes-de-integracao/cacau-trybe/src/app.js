@@ -14,6 +14,18 @@ app.get('/chocolates/total', async (req, res) => {
   res.status(200).json({totalChocolates: chocolates.length});
 })
 
+app.get('/chocolates/search', async (req, res) => {
+  try {
+    const { name } = req.query;
+    const chocolates = await cacauTrybe.getAllChocolates();
+    const filteredChocolates = chocolates.filter((chocolate) => chocolate.name.toLowerCase().includes(name.toLowerCase()));
+    if (filteredChocolates.length === 0) return res.status(404).send([]);
+    res.status(200).json(filteredChocolates);
+  } catch (error) {
+    res.status(500).send({ message: error.message });
+  }
+})
+
 app.get('/chocolates/:id', async (req, res) => {
   const { id } = req.params;
   // Usamos o Number para converter o id em um inteiro
