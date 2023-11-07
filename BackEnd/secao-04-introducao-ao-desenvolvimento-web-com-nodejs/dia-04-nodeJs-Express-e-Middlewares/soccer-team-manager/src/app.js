@@ -10,9 +10,15 @@ const teams = require('./utils/teams');
 const app = express();
 
 app.use(express.json());
+app.use(express.static('./images'));
+
 app.use(apiCredentials);
 
 let nextId = 3;
+
+app.get('/brasao/fla.png', (req, res) => {
+  res.status(200);
+});
 
 app.get('/teams', (req, res) => res.json(teams));
 
