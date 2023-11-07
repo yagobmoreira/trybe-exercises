@@ -17,14 +17,22 @@ app.get('/chocolates/total', async (req, res) => {
 app.get('/chocolates/search', async (req, res) => {
   try {
     const { name } = req.query;
-    const chocolates = await cacauTrybe.getAllChocolates();
-    const filteredChocolates = chocolates.filter((chocolate) => chocolate.name.toLowerCase().includes(name.toLowerCase()));
-    if (filteredChocolates.length === 0) return res.status(404).send([]);
-    res.status(200).json(filteredChocolates);
+    const chocolates = await cacauTrybe.findChocolateByName(name);
+    return res.status(chocolates.length === 0 ? 404 : 200).json(chocolates);
   } catch (error) {
     res.status(500).send({ message: error.message });
   }
 })
+
+app.put('/chocolates/:id', async (req, res) => {
+  const { id } = req.params;
+  const { name, brandId } = req.body;
+  const updatedChocolate = await cacauTrybe.updateChocolate(Number(id), { name, brandId });
+
+  if (updatedChocolate) return res.status(200).json({ chocolate: updatedChocolate });
+
+  res.status(404).json({ message: 'Chocolate not found' });
+});
 
 app.get('/chocolates/:id', async (req, res) => {
   const { id } = req.params;
@@ -39,6 +47,8 @@ app.get('/chocolates/brand/:brandId', async (req, res) => {
   const chocolates = await cacauTrybe.getChocolatesByBrand(Number(brandId));
   res.status(200).json({ chocolates });
 });
+
+
 
 
 module.exports = app;
