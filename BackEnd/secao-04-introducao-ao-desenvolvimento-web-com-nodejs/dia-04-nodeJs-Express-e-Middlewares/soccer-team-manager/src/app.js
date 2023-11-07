@@ -1,34 +1,15 @@
 // src/app.js
 
 const express = require('express');
+const existingId = require('./middlewares/existingId');
+const validateTeam = require('./middlewares/validateTeam');
+const teams = require('./utils/teams');
 
 const app = express();
 
 app.use(express.json());
 
 let nextId = 3;
-const teams = [
-  { id: 1, nome: 'São Paulo Futebol Clube', sigla: 'SPF' },
-  { id: 2, nome: 'Sociedade Esportiva Palmeiras', sigla: 'PAL' },
-];
-
-const validateTeam = (req, res, next) => {
-  const requiredProperties = ['nome', 'sigla'];
-  if (requiredProperties.every((property) => property in req.body)) {
-    next(); // Chama o próximo middleware
-  } else {
-    res.sendStatus(400); // Ou já responde avisando que deu errado
-  }
-};
-
-const existingId = (req, res, next) => {
-  const { id } = req.params;
-  if (teams.some((team) => team.id === Number(id))) {
-    next();
-  } else {
-    return res.status(404).send({ message: 'Id inexistente' });
-  }
-};
 
 app.get('/teams', (req, res) => res.json(teams));
 
