@@ -8,6 +8,7 @@ const apiCredentials = async (req, res, next) => {
   const authorized = JSON.parse(authdata);
 
   if (token in authorized) {
+    req.teams = authorized[token];
     next();
   } else {
     res.status(401).send({ message: 'Não autorizado' });
