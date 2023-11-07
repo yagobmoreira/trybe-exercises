@@ -4,6 +4,8 @@ const express = require('express');
 
 const app = express();
 
+app.use(express.json());
+
 let nextId = 3;
 const teams = [
   { id: 1, nome: 'São Paulo Futebol Clube', sigla: 'SPF' },
@@ -19,18 +21,21 @@ const validateTeam = (req, res, next) => {
   }
 };
 
-app.use(express.json());
+const existingId = (req, res, next) => {
+  const { id } = req.params;
+  if (teams.some((team) => team.id === Number(id))) {
+    next();
+  } else {
+    return res.status(404).send({ message: 'Id inexistente' });
+  }
+};
 
 app.get('/teams', (req, res) => res.json(teams));
 
-app.get('/teams/:id', (req, res) => {
+app.get('/teams/:id', existingId, (req, res) => {
   const id = Number(req.params.id);
   const team = teams.find((t) => t.id === id);
-  if (team) {
-    res.json(team);
-  } else {
-    res.sendStatus(404);
-  }
+  res.status(200).json(team);
 });
 
 app.post('/teams', validateTeam, (req, res) => {
