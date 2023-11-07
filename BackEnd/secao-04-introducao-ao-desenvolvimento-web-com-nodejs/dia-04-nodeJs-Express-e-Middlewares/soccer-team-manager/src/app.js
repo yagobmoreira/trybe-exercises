@@ -2,6 +2,8 @@
 
 const express = require('express');
 require('express-async-errors');
+const morgan = require('morgan');
+
 const existingId = require('./middlewares/existingId');
 const validateTeam = require('./middlewares/validateTeam');
 const apiCredentials = require('./middlewares/apiCredentials');
@@ -11,6 +13,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.static('./images'));
+app.use(morgan('dev'));
 
 app.use(apiCredentials);
 
