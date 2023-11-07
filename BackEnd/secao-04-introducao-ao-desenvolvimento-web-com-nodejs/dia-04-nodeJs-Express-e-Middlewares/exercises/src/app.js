@@ -5,6 +5,7 @@ const validateDescription = require('./middlewares/validateDescription');
 const validateCreatedAt = require('./middlewares/validateCreatedAt');
 const validateRating = require('./middlewares/validateRating');
 const validateDifficulty = require('./middlewares/validateDifficulty');
+const generateToken = require('./utils/generateToken');
 
 const app = express();
 
@@ -20,5 +21,17 @@ app.post('/activities',
   (req, res) => {
   res.status(201).json({message: "Atividade cadastrada com sucesso!"});
 })
+
+app.post('/signup', (req, res) => {
+  const {email, password, firstName, phone} = req.body;
+  const required = [email, password, firstName, phone];
+  if (required.includes(undefined)) {
+    return res.status(401).json({
+      message: 'Campos ausentes',
+    });
+  };
+  const token = generateToken();
+  return res.status(200).json({ token });
+});
 
 module.exports = app;
