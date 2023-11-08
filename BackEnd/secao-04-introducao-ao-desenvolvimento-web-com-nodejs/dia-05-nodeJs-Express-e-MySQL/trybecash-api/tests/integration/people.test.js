@@ -30,6 +30,6 @@ describe('Testando os endpoints de people', function () {
       );
 
     expect(response.status).to.be.equal(201);
-    expect(response.body).to.deep.equal({ message: "Pessoa cadastrada com o id 42" });
+    expect(response.body).to.deep.equal({ message: "Pessoa cadastrada com sucesso com o id 42" });
   })
 })
