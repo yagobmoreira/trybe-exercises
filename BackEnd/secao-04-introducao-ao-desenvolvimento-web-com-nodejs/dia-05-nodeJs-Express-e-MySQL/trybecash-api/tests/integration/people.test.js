@@ -73,4 +73,34 @@ describe('Testando os endpoints de people', function () {
     expect(response.status).to.be.equal(200);
     expect(response.body).to.deep.equal(peopleList[0]);
   });
+
+  it('Testando a alteração de uma pessoa com o id 1', async function () {
+    sinon.stub(connection, 'execute').resolves([ { affectedRows: 1 }]);
+
+    const response = await chai
+      .request(app)
+      .put('/people/1')
+      .send(
+        {
+          firstName: "De",
+          lastName: "Arrascaeta",
+          email: "dearrascaeta@flamengo.com.br",
+          phone: "123 423 1255",
+        },
+      );
+
+    expect(response.status).to.be.equal(200);
+    expect(response.body).to.deep.equal({ message: "Pessoa de id 1 atualizada com sucesso"});
+  });
+
+  it ('Testando a exclusão da pessoa com id 1', async function () {
+    sinon.stub(connection, 'execute').resolves([{ affectedRows: 1 }]);
+
+    const response = await chai
+      .request(app)
+      .delete('/people/1');
+
+    expect(response.status).to.be.equal(200);
+    expect(response.body).to.deep.equal({ message: "Pessoa de id 1 excluída com sucesso"});
+  });
 });
