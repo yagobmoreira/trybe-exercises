@@ -8,6 +8,16 @@ const insert = (person) => {
   );
 };
 
+const findAll = () => {
+  return connection.execute('SELECT * FROM people');
+}
+
+const findById = (id) => {
+  return connection.execute('SELECT * FROM people WHERE id = ?', [id]);
+}
+
 module.exports = {
   insert,
+  findAll,
+  findById,
 }
