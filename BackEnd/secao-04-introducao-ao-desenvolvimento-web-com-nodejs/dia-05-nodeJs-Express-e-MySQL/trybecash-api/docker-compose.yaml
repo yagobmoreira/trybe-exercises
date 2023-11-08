@@ -16,6 +16,8 @@ services:
       MYSQL_PASSWORD: root
       MYSQL_HOST: database
       MYSQL_PORT: 3306
+    env_file:
+      - .env
     depends_on:
       - "database"
 
