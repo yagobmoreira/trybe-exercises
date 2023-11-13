@@ -66,7 +66,7 @@ router.delete('/:id', async (req, res) => {
     const [result] = await peopleDB.remove(id);
 
     if (result.affectedRows > 0) {
-      return res.status(200).json({ message: `Pessoa de id ${id} excluída com sucesso` });
+      return res.status(204).end();
     } else {
       return res.status(404).json({ message: 'Pessoa não encontrada' });
     }
