@@ -21,4 +21,20 @@ async function main() {
   }
 }
 
+async function getFilesSizeSum() {
+  try {
+    let filesSizeSum = 0
+    await Promise.all(files.map(async (file) => {
+      contentFile = await fs.readFile(file);
+      filesSizeSum = filesSizeSum + contentFile.byteLength;
+    }));
+    result = `Lidos 3 arquivos totalizando ${filesSizeSum} bytes`;
+    return console.log(result);
+  } catch (err) {
+    console.error(`Erro ao ler o arquivo: ${err.message}`);
+  }
+}
+
+getFilesSizeSum()
+
 main()
