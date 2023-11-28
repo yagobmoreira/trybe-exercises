@@ -11,5 +11,6 @@ app.get('/health/live', (_req, res) => {
 })
 
 app.get('/books', Book.getAll);
+app.get('/books/:id', Book.getById);
 
 module.exports = app;
