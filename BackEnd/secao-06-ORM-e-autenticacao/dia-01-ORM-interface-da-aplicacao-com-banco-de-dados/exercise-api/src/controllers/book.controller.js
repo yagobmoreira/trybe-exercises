@@ -2,14 +2,14 @@ const BookService = require('../services/book.service');
 
 const error500Message = 'Algo deu errado';
 
-const getAll = async (_req, res) => {
+const getAll = async (req, res) => {
   try {
     const { author } = req.query;
     let books;
     if (author) {
-      books = BookService.getByAuthor(author);
+      books = await BookService.getByAuthor(author);
     } else {
-      books = BookService.getAll();
+      books = await BookService.getAll();
     }
     return res.status(200).json(books);
   } catch (error) {
