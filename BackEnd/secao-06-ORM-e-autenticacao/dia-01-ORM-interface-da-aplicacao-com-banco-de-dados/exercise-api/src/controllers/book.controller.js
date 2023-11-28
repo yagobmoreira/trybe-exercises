@@ -33,8 +33,8 @@ const getById = async (req, res) => {
 
 const createBook = async (req, res) => {
   try {
-    const { title, author, pageQuantity } = req.body;
-    const newBook = await BookService.createBook(title, author, pageQuantity);
+    const { title, author, pageQuantity, publisher } = req.body;
+    const newBook = await BookService.createBook(title, author, pageQuantity, publisher);
 
     return res.status(201).json(newBook);
   } catch (error) {
@@ -46,8 +46,8 @@ const createBook = async (req, res) => {
 const updateBook = async (req, res) => {
   try {
     const { id } = req.params
-    const { title, author, pageQuantity } = req.body;
-    const updatedBook = await BookService.updateBook(id, title, author, pageQuantity);
+    const { title, author, pageQuantity, publisher } = req.body;
+    const updatedBook = await BookService.updateBook(id, title, author, pageQuantity, publisher);
     if (!updatedBook) return res.status(404).json({ message: 'Book not found' });
     
     return res.status(200).json({ message: "Book updated"});

@@ -25,6 +25,10 @@ const BookModel = (sequelize, DataTypes) => {
     updatedAt: {
       type: DataTypes.DATE,
       allowNull: false,
+    },
+    publisher: {
+      type: DataTypes.STRING,
+      allowNull: true,
     }
   }, {
     tableName: "books"
