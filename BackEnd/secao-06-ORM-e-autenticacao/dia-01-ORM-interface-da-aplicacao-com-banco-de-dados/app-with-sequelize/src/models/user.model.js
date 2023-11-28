@@ -4,6 +4,10 @@ const UserModel = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     phoneNum: DataTypes.STRING,
   });
+  
+  // (async () => {
+  //   await sequelize.sync({ force: true});
+  // })();
 
   return User;
 };
