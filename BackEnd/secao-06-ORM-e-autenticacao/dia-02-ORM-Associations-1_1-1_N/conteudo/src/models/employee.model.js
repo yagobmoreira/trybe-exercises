@@ -8,9 +8,11 @@ const EmployeeModel = (sequelize, DataTypes) => {
     },
     firstName: {
       type: DataTypes.STRING,
+      field: "first_name"
     },
     lastName: {
       type: DataTypes.STRING,
+      field: "last_name"
     },
     age: {
       type: DataTypes.INTEGER,

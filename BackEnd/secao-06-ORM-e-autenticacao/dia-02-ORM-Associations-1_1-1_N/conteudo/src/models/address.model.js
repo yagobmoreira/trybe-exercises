@@ -14,7 +14,7 @@ const AddressModel =  (sequelize, DataTypes) => {
   });
 
   Address.associate = (models) => {
-// define o tipo de relacionamento
+    // define o tipo de relacionamento
     Address.belongsTo(models.Employee,
     // define qual a foreign key a ser criada
       { foreignKey: 'employeeId', as: 'employees' });
