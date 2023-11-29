@@ -25,8 +25,7 @@ const EmployeeModel = (sequelize, DataTypes) => {
   });
 
   Employee.associate = (models) => {
-    Employee.hasOne(models.Address, 
-      { foreignKey: 'employeeId', as: 'addresses'});
+    Employee.hasMany(models.Address, { foreignKey: 'employeeId', as: 'addresses'});
   };
 
   return Employee;
