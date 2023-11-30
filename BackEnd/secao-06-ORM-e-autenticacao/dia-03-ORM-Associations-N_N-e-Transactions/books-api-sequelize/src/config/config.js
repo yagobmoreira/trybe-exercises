@@ -2,7 +2,7 @@ module.exports = {
   development: {
     username: process.env.DATABASE_USER || 'root',
     password: process.env.DATABASE_PASSWORD || 'senha_mysql',
-    database: `${process.env.DATABASE_NAME || 'conteudo_6_2'}_development`,
+    database: `${process.env.DATABASE_NAME || 'books_database'}_development`,
     host: process.env.DATABASE_HOSTNAME || 'localhost',
     port: process.env.DATABASE_PORT || 3306,
     dialect: 'mysql',
@@ -10,7 +10,7 @@ module.exports = {
   test: {
     username: process.env.DATABASE_USER || 'root',
     password: process.env.DATABASE_PASSWORD || 'senha_mysql',
-    database: `${process.env.DATABASE_NAME || 'conteudo_6_2'}_test`,
+    database: `${process.env.DATABASE_NAME || 'books_database'}_test`,
     host: process.env.DATABASE_HOSTNAME || 'localhost',
     port: process.env.DATABASE_PORT || 3306,
     dialect: 'mysql',
@@ -18,7 +18,7 @@ module.exports = {
   production: {
     username: process.env.DATABASE_USER || 'root',
     password: process.env.DATABASE_PASSWORD || 'senha_mysql',
-    database: `${process.env.DATABASE_NAME || 'conteudo_6_2'}_production`,
+    database: `${process.env.DATABASE_NAME || 'books_database'}_production`,
     host: process.env.DATABASE_HOSTNAME || 'localhost',
     port: process.env.DATABASE_PORT || 3306,
     dialect: 'mysql',
