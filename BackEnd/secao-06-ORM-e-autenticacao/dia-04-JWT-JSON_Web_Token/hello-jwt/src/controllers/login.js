@@ -5,7 +5,7 @@ const isBodyValid = (...args) => args.every((arg) => arg);
 
 const secret = process.env.JWT_SECRET;
 
-module.exports = async (req, res) => {
+module.exports = async (req, res, next) => {
   const { username, password } = req.body;
 
   if(!isBodyValid(username, password)) {

@@ -5,29 +5,30 @@ const jwt = require('jsonwebtoken');
 const { JWT_SECRET } = process.env;
 
 /* Recebemos o valor de `admin` que, por padrão, é `false` */
-const login = async (username, password, admin = false) => {
+const login = async (username, password) => {
   /* Não precisamos validar os campos, pois o controller já faz isso pra nós */
 
-  /* Se o login for admin e a senha estiver incorreta */
-  if (username === 'admin' && password !== 's3nh4S3gur4???') {
-    /* Retornamos um objeto de erro */
-    return {
-      error: {
-        message: 'Invalid username or password',
-        code: 'invalidCredentials',
-      },
-    };
+  /* Buscamos as informações no arquivo Users.json */
+
+  const user = await model.findOne(username);
+ 
+  if (!user || user.password !== password) {
+   return {
+     error: {
+       code: 'invalidCredentials',
+       message: 'Invalid username or password',
+     },
+   };
   }
 
   /* Caso a função login seja chamada com o parâmetro admin pré definido, utilizamos esse parâmetro.
      Caso contrário, verificamos o nome de usuário e senha */
-  const isAdmin = admin || (username === 'admin' && password === 's3nh4S3gur4???');
-
+ 
   const payload = {
     username,
     /* Passamos a utilizar o valor da variável `admin` */
     /* para determinar o valor do campo `admin` no payload do token */
-    admin: isAdmin,
+    admin: user.admin,
   };
 
   const token = jwt.sign(payload, JWT_SECRET, {
@@ -61,7 +62,7 @@ const create = async (username, password) => {
 
   /* Por fim, retornamos os dados da pessoa para o controller */
   /* Por motivos de segurança, não incluiremos a senha */
-  return login(username, password, admin);
+  return login(username, password);
 };
 
 module.exports = {
