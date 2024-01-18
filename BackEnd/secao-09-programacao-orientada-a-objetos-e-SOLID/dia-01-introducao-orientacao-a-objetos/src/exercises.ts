@@ -1,53 +1,28 @@
-class PessoaEstudante {
-  private _nome: string;
-  private _matricula: string;
-  private _notasProvas: number[];
-  private _notasTrabalhos: number[];
+import Client from "./entities/Client";
+import Order from "./entities/Order";
+import OrderItem from "./entities/OrderItem";
+import PessoaEstudante from "./entities/PessoaEstudante";
 
-  constructor (nome: string, matricula: string) {
-    this._nome = nome;
-    this._matricula = matricula;
-    this._notasProvas = [];
-    this._notasTrabalhos = [];
-  }
-  
-  get matricula(): string { return this._matricula; }
-  
-  set matricula(newMatricula: string) { this._matricula = newMatricula; }
-  
-  get nome(): string { return this._nome; }
 
-  set nome(newNome: string) { 
-    if (newNome.length < 3) throw new Error('O nome deve conter no mínimo 3 caracteres');
-    this._nome = newNome; 
-  }
+//Exercicio 01 e 02
+const personOne = new PessoaEstudante('202001011', 'Maria da Silva');
 
-  get notasProvas(): number[] { return this._notasProvas; }
-  
-  set notasProvas(newNotasProvas: number[]) { 
-    if (newNotasProvas.length > 4) {
-      throw new Error('A pessoa estudante só pode ter 4 notas de prova');
-    }
-    this._notasProvas = newNotasProvas; 
-  }
+personOne.notasProvas = [25, 20, 23, 23];
+personOne.notasTrabalhos = [45, 45];
 
-  get notasTrabalhos(): number[] { return this._notasTrabalhos; }
+console.log(personOne);
+console.log('Soma de todas as notas: ', personOne.somaNotas());
+console.log('Média de todas as notas: ', personOne.mediaNotas());
 
-  set notasTrabalhos(newNotasTrabalhos: number[]) { 
-    if (newNotasTrabalhos.length > 2) {
-      throw new Error('A pessoa estudante só pode ter 2 notas de trabalho');
-    }
-    this._notasTrabalhos = newNotasTrabalhos; 
-  }
 
-  somaNotas(): number {
-    return [...this.notasProvas, ...this.notasTrabalhos]
-      .reduce((acc, nota) => acc + nota, 0);
-  }
 
-  mediaNotas(): number {
-    const somaNotas = this.somaNotas();
-    const quantidadeNotas = this.notasProvas.length + this.notasTrabalhos.length;
-    return Math.round(somaNotas / quantidadeNotas);
-  }
-}
+//Exercicio 03 e 04
+const client = new Client('João');
+
+const sandwich = new OrderItem('Sanduíche Natural', 5.00);
+const juice = new OrderItem('Suco de Abacaxi', 5.00);
+const dessert = new OrderItem('Gelatina de Uva', 2.50);
+
+const order = new Order(client, [sandwich, juice, dessert], 'dinheiro', 0.10);
+
+console.log(order);
