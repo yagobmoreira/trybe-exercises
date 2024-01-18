@@ -2,7 +2,7 @@ class Person {
   name: string;
   private _weight: number;
   private _age: number;
-  readonly height: number; // o caractere "?" indica um atributo opcional
+  readonly height: number;
 
   constructor(name: string, height: number, weight: number, age: number) {
     this.name = name;
@@ -32,6 +32,16 @@ class Person {
 
 const p1 = new Person('Maria', 181, 58, 19);
 const p2 = new Person('João', 175, 66, 18);
+
+p1.name = 'Maria Silva';
+console.log(p1.name);
+console.log(p1.getWeight());
+console.log(p2.age);
+p2.birthday();
+console.log(p2.age);
+p2.age = 21;
+console.log(p2.age);
+console.log(p1.height);
 
 
 class Tv {
