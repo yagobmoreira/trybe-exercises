@@ -18,4 +18,12 @@ class PessoaEstudante {
     }   
     this._notasTrabalhos = notasTrabalhos;
   }
+
+  somaNotas(notas: number[]): number {
+    return notas.reduce((acc, nota) => acc + nota, 0);
+  }
+
+  mediaNotas(notas: number[]): number {
+    return this.somaNotas(notas) / notas.length;
+  }
 }
