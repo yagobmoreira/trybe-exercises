@@ -1,4 +1,5 @@
 import Client from "./entities/Client";
+import Data from "./entities/Data";
 import Order from "./entities/Order";
 import OrderItem from "./entities/OrderItem";
 import PessoaEstudante from "./entities/PessoaEstudante";
@@ -26,3 +27,10 @@ const dessert = new OrderItem('Gelatina de Uva', 2.50);
 const order = new Order(client, [sandwich, juice, dessert], 'dinheiro', 0.10);
 
 console.log(order);
+
+
+// Exercicio 05 e 06
+
+const testDate = new Data(29, 1, 1989);
+
+console.log(testDate);
