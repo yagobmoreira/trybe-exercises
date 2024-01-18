@@ -7,6 +7,8 @@ class PessoaEstudante {
   constructor (nome: string, matricula: string) {
     this._nome = nome;
     this._matricula = matricula;
+    this._notasProvas = [];
+    this._notasTrabalhos = [];
   }
   
   get matricula(): string { return this._matricula; }
@@ -37,13 +39,15 @@ class PessoaEstudante {
     }
     this._notasTrabalhos = newNotasTrabalhos; 
   }
-  somaNotas(notas: number[]): number {
-    return notas.reduce((acc, nota) => acc + nota, 0);
+
+  somaNotas(): number {
+    return [...this.notasProvas, ...this.notasTrabalhos]
+      .reduce((acc, nota) => acc + nota, 0);
   }
 
-  mediaNotas(notas: number[]): number {
-    return this.somaNotas(notas) / notas.length;
+  mediaNotas(): number {
+    const somaNotas = this.somaNotas();
+    const quantidadeNotas = this.notasProvas.length + this.notasTrabalhos.length;
+    return Math.round(somaNotas / quantidadeNotas);
   }
-
-
 }
