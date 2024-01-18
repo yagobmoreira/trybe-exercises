@@ -45,27 +45,43 @@ console.log(p1.height);
 
 
 class Tv {
-  public brand: string;
-  public size: number;
-  public resolution: string;
-  public connections: string[];
-  public connectedTo?: string;
+  private _brand: string;
+  private _size: number;
+  private _resolution: string;
+  private _connections: string[];
+  private _connectedTo?: string;
 
   constructor(brand: string, size: number, resolution: string, connections: string[]) {
-    this.brand = brand;
-    this.size = size;
-    this.resolution = resolution;
-    this.connections = connections;
+    this._brand = brand;
+    this._size = size;
+    this._resolution = resolution;
+    this._connections = connections;
   }
 
   turnOn(): void {
-    console.log(`TV ${this.brand}, ${this.size}", resolution: ${this.resolution}`);
+    console.log(`TV ${this._brand}, ${this._size}", resolution: ${this._resolution}`);
+  }
+
+  get connectedTo(): string | undefined {
+    return this._connectedTo;
+  };
+
+  set connectedTo(newValue: string) {
+    if (!newValue || this._connections.includes(newValue)) {
+      this._connectedTo = newValue;
+      console.log(this._connectedTo);
+    } else {
+      console.log(`Sorry, connection unavailable`);
+    }
   }
 }
 
 const tv1 = new Tv('LG', 32, '4K', ['HDMI', 'Ethernet', 'Wi-Fi']);
 
 const tv2 = new Tv('Samsung', 42, 'Full HD', ['HDMI', 'Ethernet', 'Wi-Fi']);
+
+tv2.connectedTo = 'HDMI';
+console.log(tv2.connectedTo);
 
 tv1.turnOn();
 
