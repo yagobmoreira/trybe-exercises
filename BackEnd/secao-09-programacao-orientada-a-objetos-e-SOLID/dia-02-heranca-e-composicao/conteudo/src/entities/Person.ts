@@ -1,12 +1,12 @@
 export default class Person {
-  private _name: string;
-  private _birthDate: Date;
 
-  constructor(name: string, birthDate: Date) {
-    this.validatePerson();
-    this._name = name;
-    this._birthDate = birthDate;
+  constructor(
+    private _name: string,
+    private _birthDate: Date,
+  ) {
+    this.validatePerson(); 
   }
+
 
   get name() { return this._name };
 
@@ -28,9 +28,9 @@ export default class Person {
     return Math.floor(diff / yearMs);
   }
 
-  private validateName(name: string) {
-    if(name.length < 3) {
-      throw new Error('O nome deve conter no mínimo 3 caracteres');
+  private validateName(name: string): void {
+    if (name.length < 3) {
+     throw new Error(`O nome deve conter no mínimo 3 caracteres.`);
     }
   }
 
@@ -43,7 +43,7 @@ export default class Person {
     }
   }
 
-  private validatePerson() {
+  private validatePerson(): void {
     this.validateName(this.name)
     this.validateBirthDate(this.birthDate)
   }
