@@ -1,5 +1,5 @@
-import Person from "./entities/Person";
-import Student from "./entities/Student";
+import Person from "./Entities/Person";
+import Student from "./Entities/Student";
 class Superclass {
   constructor(public isSuper: boolean = true) { }
 
