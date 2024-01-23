@@ -16,9 +16,16 @@ describe('Testando a função "approvedStudents"', function() {
         { name: disciplinesDict.mathematics, grade: 0.8 },
         { name: disciplinesDict.history, grade: 0.9 },
       ];
+
+      const school = {
+        name: 'any-school',
+        approvalGrade: 0.7,
+      }
+
       const student = {
         name: 'test',
         disciplines,
+        school
       };
       const result = approvedStudents(student);
 
@@ -32,9 +39,16 @@ describe('Testando a função "approvedStudents"', function() {
         { name: disciplinesDict.mathematics, grade: 0.1 },
         { name: disciplinesDict.history, grade: 0.2 },
       ];
+
+      const school = {
+        name: 'any-school',
+        approvalGrade: 0.7,
+      }
+
       const student = {
         name: 'test',
         disciplines,
+        school
       };
       const result = approvedStudents(student);
 
@@ -48,9 +62,16 @@ describe('Testando a função "approvedStudents"', function() {
         { name: disciplinesDict.mathematics, grade: 0.5 },
         { name: disciplinesDict.history, grade: 0.9 },
       ];
+
+      const school = {
+        name: 'any-school',
+        approvalGrade: 0.7,
+      }
+
       const student = {
         name: 'test',
         disciplines,
+        school
       };
       const result = approvedStudents(student);
 
