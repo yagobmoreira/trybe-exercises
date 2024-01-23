@@ -1,6 +1,6 @@
-import LongRangeCharacter from "./Entities/LongRangeCharacter";
-import MeleeCharacter from "./Entities/MeleeCharacter";
-import Character from "./Entities/Character";
+import LongRangeCharacter from "./entities/LongRangeCharacter";
+import MeleeCharacter from "./entities/MeleeCharacter";
+import Character from "./entities/Character";
 
 const yoshi = new MeleeCharacter('Yoshi', 'Super dragon');
 const samus = new LongRangeCharacter('Samus', 'Zero Laser');
