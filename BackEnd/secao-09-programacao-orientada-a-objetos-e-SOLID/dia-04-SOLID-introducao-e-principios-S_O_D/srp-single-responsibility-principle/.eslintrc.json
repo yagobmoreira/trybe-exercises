@@ -13,6 +13,7 @@
       "plugin:mocha/recommended",
       "airbnb-typescript/base"
     ],
+    "ignorePatterns": ["tests"],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
       "ecmaVersion": 2019,
