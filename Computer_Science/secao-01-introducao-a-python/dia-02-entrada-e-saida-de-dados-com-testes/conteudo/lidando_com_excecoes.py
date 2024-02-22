@@ -7,6 +7,7 @@ with open("notas.txt", mode="r") as file:
         if int(student_grade[1]) < 6:
             recuperacao.append(student_grade[0] + "\n")
 
+
 with open("recuStudents.txt", mode="w") as recu_students_file:
 
     print(recuperacao)
