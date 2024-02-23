@@ -38,7 +38,8 @@ class Eletrodomestico:
 
 
 class Secador(Eletrodomestico):
-    pass
+    def esta_ligado(self):
+        return "Sim" if super().esta_ligado() else "Não"
 
 
 class Batedeira(Eletrodomestico):
@@ -46,7 +47,9 @@ class Batedeira(Eletrodomestico):
 
 
 class MaquinaDeLavar(Eletrodomestico):
-    pass
+    def __init__(self, cor, potencia, tensao, preco, quantidade_de_litros):
+        super().__init__(cor, potencia, tensao, preco)
+        self.quantidade_de_portas = quantidade_de_litros
 
 
 novo_secador = Secador("Vermelho", 1500, 220, 600)
