@@ -14,7 +14,7 @@ def who_that_pokemon():
         input_data = input("Who's that pokemon ? ")
 
         if input_data.lower() == pokemon_name.lower():
-            print(f"Você acertou ! O pokemon era {pokemon_name}")
+            print(f"Você acertou ! O pokemon era {pokemon_name.upper()}")
             break
         else:
             print("Você errou, tente novamente !")
