@@ -23,13 +23,11 @@ for algorithm in (insertion_sort, selection_sort):
             f"{algorithm_name} com entrada"
             + f"inversamente ordenada de {input} números"
         ):
-
             algorithm(reversed_sorted_numbers)
 
         with Cronometro(
             f"{algorithm_name} com entrada" + f"aleatória de {input} números"
         ):
-
             algorithm(random_numbers)
 
         print("*" * 50)
