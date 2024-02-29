@@ -7,9 +7,9 @@ def insertion_sort(numbers):
 
         # Tomamos a posição anterior para iniciar a comparação
         new_position = index - 1
-        while (
-            new_position >= 0 and numbers[new_position] > key
-        ):  # Enquanto a chave for menor, remaneja o elemento para frente
+
+        # Enquanto a chave for menor, remaneja o elemento para frente
+        while new_position >= 0 and numbers[new_position] > key:
             numbers[new_position + 1] = numbers[new_position]
             new_position = new_position - 1
 
@@ -18,5 +18,8 @@ def insertion_sort(numbers):
     return numbers
 
 
-numbers = [7, 5, 9, 2, 6, 8]
-print(insertion_sort(numbers))
+if __name__ == "__main__":
+    numbers = [7, 5, 9, 2, 6, 8]
+    print(f"Lista inicial: {numbers}")
+    ordered_numbers = insertion_sort(numbers)
+    print(f"Lista final: {ordered_numbers}")
