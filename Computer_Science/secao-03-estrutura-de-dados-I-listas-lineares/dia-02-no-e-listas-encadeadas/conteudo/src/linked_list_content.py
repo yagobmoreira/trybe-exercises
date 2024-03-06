@@ -96,6 +96,17 @@ class LinkedList(Node):
         while not self.is_empty():
             self.remove_first()
 
+    def index_of(self, value):
+        position = 1
+        current_value = self.head_value
+        while current_value:
+            if current_value.value == value:
+                return position
+            current_value = current_value.next
+            position += 1
+
+        return -1
+
 
 if __name__ == "__main__":
     linked_list = LinkedList()
@@ -127,3 +138,6 @@ if __name__ == "__main__":
     linked_list.insert_at(9, 4)
 
     print(linked_list.get_element_at(3))
+
+    print(linked_list.index_of(9))
+    print(linked_list)
