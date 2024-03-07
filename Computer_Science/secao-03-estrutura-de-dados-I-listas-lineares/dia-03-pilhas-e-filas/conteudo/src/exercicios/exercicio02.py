@@ -29,3 +29,21 @@ class Stack:
 
     def peek(self):
         return self._data.get_element_at(len(self._data))
+
+    def min_value(self):
+        minimum = self.peek().value
+
+        while not self.is_empty():
+            top_value = self.pop().value
+            if top_value < minimum:
+                minimum = top_value
+
+        return minimum
+
+
+if __name__ == "__main__":
+    content_stack = Stack()
+    content_stack.push(1)
+    content_stack.push(-2)
+    content_stack.push(3)
+    print(content_stack.min_value())  # saída: -2
