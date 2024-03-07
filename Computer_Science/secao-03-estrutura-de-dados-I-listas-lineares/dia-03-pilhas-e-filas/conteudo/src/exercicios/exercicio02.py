@@ -31,14 +31,20 @@ class Stack:
         return self._data.get_element_at(len(self._data))
 
     def min_value(self):
-        minimum = self.peek().value
 
-        while not self.is_empty():
-            top_value = self.pop().value
-            if top_value < minimum:
-                minimum = top_value
+        if self.is_empty():
 
-        return minimum
+            return None
+
+        min_value = self._data.get_element_at(0)
+        tamanho = 0
+        while tamanho < len(self._data):
+            stack_value = self._data.get_element_at(tamanho)
+            if stack_value.value < min_value.value:
+                min_value = stack_value
+            tamanho += 1
+
+        return min_value.value
 
 
 if __name__ == "__main__":
