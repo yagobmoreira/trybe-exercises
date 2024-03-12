@@ -1,40 +1,42 @@
 class Hierarchy:
-    def __init__(self, subordinates) -> None:
-        self.subordinates = subordinates
+    def __init__(self, k) -> None:
+        self.subordinates = {}
         self.scores = {}
+        self.k = k
+
+    def add_employee(self, boss, employee):
+        if not boss:
+            self.subordinates[employee] = []
+            self.scores[employee] = 1
+            return
+
+        self.scores[boss] += 1
+
+        if len(self.subordinates[boss]) < self.k:
+            self.subordinates[boss].append(employee)
+            self.subordinates[employee] = []
+            self.scores[employee] = 1
+        else:
+            self.add_employee(self.subordinates[boss][0], employee)
 
     def get_score(self, employee):
-        if employee in self.scores:
-            print("Score já calculado anteriormente")
-            return self.scores[employee]
-
-        this_score = 1
-
-        for subordinate in self.subordinates[employee]:
-            this_score += self.get_score(subordinate)
-
-        self.scores[employee] = this_score
-
-        return this_score
+        return self.scores[employee]
 
 
 if __name__ == "__main__":
-    subordinates = {
-        1: [2, 3],
-        2: [4],
-        3: [],
-        4: [5, 6],
-        5: [7],
-        6: [],
-        7: [],
-    }
+    hierarchy = Hierarchy(2)
+    hierarchy.add_employee(None, 1)
+    hierarchy.add_employee(1, 2)
+    hierarchy.add_employee(1, 3)
+    hierarchy.add_employee(2, 4)
+    hierarchy.add_employee(4, 5)
+    hierarchy.add_employee(4, 6)
+    hierarchy.add_employee(5, 7)
 
-    hierarchy = Hierarchy(subordinates)
+    print("\nAntes das novas inserções")
+    print(f"Subordinates: {hierarchy.subordinates}")
+    hierarchy.add_employee(4, 8)
+    hierarchy.add_employee(4, 9)
 
-    print(hierarchy.get_score(1))
-    print(hierarchy.get_score(2))
-    print(hierarchy.get_score(3))
-    print(hierarchy.get_score(4))
-    print(hierarchy.get_score(5))
-    print(hierarchy.get_score(6))
-    print(hierarchy.get_score(7))
+    print("\nApós novas inserções")
+    print(f"Subordinates: {hierarchy.subordinates}\n")
