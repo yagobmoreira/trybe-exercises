@@ -19,7 +19,7 @@ class Hierarchy:
         else:
             self.add_employee(self.subordinates[boss][0], employee)
 
-            current_boss = boss
+        current_boss = boss
 
         while current_boss:
             self.scores[current_boss] += 1
