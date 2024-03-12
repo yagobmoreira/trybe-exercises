@@ -1,10 +1,21 @@
-def get_score(subordinates, employee):
-    this_score = 1
+class Hierarchy:
+    def __init__(self, subordinates) -> None:
+        self.subordinates = subordinates
+        self.scores = {}
 
-    for subordinate in subordinates[employee]:
-        this_score += get_score(subordinates, subordinate)
+    def get_score(self, employee):
+        if employee in self.scores:
+            print("Score já calculado anteriormente")
+            return self.scores[employee]
 
-    return this_score
+        this_score = 1
+
+        for subordinate in self.subordinates[employee]:
+            this_score += self.get_score(subordinate)
+
+        self.scores[employee] = this_score
+
+        return this_score
 
 
 if __name__ == "__main__":
@@ -18,10 +29,12 @@ if __name__ == "__main__":
         7: [],
     }
 
-    print(get_score(subordinates, 1))
-    print(get_score(subordinates, 2))
-    print(get_score(subordinates, 3))
-    print(get_score(subordinates, 4))
-    print(get_score(subordinates, 5))
-    print(get_score(subordinates, 6))
-    print(get_score(subordinates, 7))
+    hierarchy = Hierarchy(subordinates)
+
+    print(hierarchy.get_score(1))
+    print(hierarchy.get_score(2))
+    print(hierarchy.get_score(3))
+    print(hierarchy.get_score(4))
+    print(hierarchy.get_score(5))
+    print(hierarchy.get_score(6))
+    print(hierarchy.get_score(7))
