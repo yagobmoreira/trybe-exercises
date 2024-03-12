@@ -19,6 +19,18 @@ class Hierarchy:
         else:
             self.add_employee(self.subordinates[boss][0], employee)
 
+            current_boss = boss
+
+        while current_boss:
+            self.scores[current_boss] += 1
+            current_boss = self.find_new_boss(current_boss, employee)
+
+    def find_new_boss(self, boss, employee):
+        if len(self.subordinates[boss]) < self.k:
+            return boss
+        else:
+            return self.find_new_boss(self.subordinates[boss][0], employee)
+
     def get_score(self, employee):
         return self.scores[employee]
 
