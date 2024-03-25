@@ -21,5 +21,17 @@ public class TiposPrimitivos {
         System.out.println(numA);
         System.out.println(numB);
 
+        float floatNumA = -101.23f;
+        float floatNumB = 2.356f;
+
+        System.out.println(floatNumA + floatNumB);
+
+        double valorUm = 0.5; // double inicializado naturalmente
+        double valorDois = 0.5d; // double definido explicitamente
+        double valorTres = 0.123456789;
+        System.out.println(valorUm);
+        System.out.println(valorDois);
+        System.out.println(valorTres);
+
     }
 }
