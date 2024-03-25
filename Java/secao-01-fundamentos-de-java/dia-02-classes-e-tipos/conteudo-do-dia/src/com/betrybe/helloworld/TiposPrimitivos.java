@@ -33,5 +33,12 @@ public class TiposPrimitivos {
         System.out.println(valorDois);
         System.out.println(valorTres);
 
+        boolean isBoolean = true;
+        boolean ehNumero = false;
+
+        char letraA = 'a';
+        char letraAMaiuscula = 'A';
+        System.out.println(letraA);
+        System.out.println(letraAMaiuscula);
     }
 }
