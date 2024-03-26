@@ -1,3 +1,5 @@
+package com.controleDeFluxo;
+
 public class CondicionalIf {
     public static void main(String[] args) {
         double mediaFinal = 6.0;
