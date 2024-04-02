@@ -4,10 +4,12 @@ public class Carro {
   private String marca;
   private String modelo;
   private int ano;
+  private static int CONTADOR = 0;
   public Carro(String marca, String modelo, int ano) {
     this.marca = marca;
     this.modelo = modelo;
     this.ano = ano;
+    Carro.CONTADOR++;
   }
 
   public String info() {
@@ -36,5 +38,9 @@ public class Carro {
 
   public void setAno(int ano) {
     this.ano = ano;
+  }
+
+  public static int quantidadeDeCarros() {
+    return CONTADOR;
   }
 }
