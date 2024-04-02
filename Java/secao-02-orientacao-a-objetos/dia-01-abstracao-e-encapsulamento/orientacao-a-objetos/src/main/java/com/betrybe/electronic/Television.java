@@ -8,18 +8,18 @@ public class Television {
   /**
    * The Is on.
    */
-  boolean isOn = false;
-  String brand;
+  private boolean isOn = false;
+  private String brand;
   /**
    * The Model.
    */
-  String model;
+  private String model;
   /**
    * The Size.
    */
-  int size;
-  int MAX_VOLUME = 30;
-  int volume = 0;
+  private int size;
+  private int MAX_VOLUME = 30;
+  private int volume = 0;
 
   /**
    * Instantiates a new Television.
