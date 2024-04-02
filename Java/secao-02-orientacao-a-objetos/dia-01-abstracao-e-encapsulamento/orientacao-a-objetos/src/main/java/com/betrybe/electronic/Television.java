@@ -18,8 +18,10 @@ public class Television {
    * The Size.
    */
   private int size;
-  private int MAX_VOLUME = 30;
+  private static int MAX_VOLUME = 30;
   private int volume = 0;
+
+  private static double INCH_TO_CM = 2.54;
 
   /**
    * Instantiates a new Television.
@@ -83,5 +85,9 @@ public class Television {
 
   public void setModel(String model) {
     this.model = model;
+  }
+
+  public static double convertToCentimeters(double inches) {
+    return inches * INCH_TO_CM;
   }
 }

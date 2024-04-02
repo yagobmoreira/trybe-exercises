@@ -29,6 +29,9 @@ public class Application {
     System.out.println("Modelo novo:");
     System.out.println(television.getModel());
 
+    double sizeCm = Television.convertToCentimeters(55);
+    System.out.println("O tamanho em centímetros é: "  + sizeCm);
+
     System.out.println("Finalizando o sistema...");
   }
 }
