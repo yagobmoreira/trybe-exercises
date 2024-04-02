@@ -18,6 +18,8 @@ public class Television {
    * The Size.
    */
   int size;
+  int MAX_VOLUME = 30;
+  int volume = 0;
 
   /**
    * Instantiates a new Television.
@@ -45,5 +47,17 @@ public class Television {
 
   public String info() {
     return "Marca: %s, Modelo: %s, Tamanho: %d, Ligada: %b".formatted(brand, model, size, isOn);
+  }
+
+  public void increaseVolume() {
+    if (volume < MAX_VOLUME) {
+      volume++;
+    }
+  }
+
+  public void decreaseVolume() {
+    if (volume > 0) {
+      volume--;
+    }
   }
 }
