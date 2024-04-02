@@ -15,6 +15,20 @@ public class Application {
 
     Television television = new Television("Phillips", "Smart TV", 55);
 
+    System.out.println("A televisão está ligada ?");
+    System.out.println(television.isOn());
+
+    System.out.println("O volume atual é: ");
+    System.out.println(television.getVolume());
+
+    System.out.println("Modelo antigo:");
+    System.out.println(television.getModel());
+
+    television.setModel("LCD-Ultra");
+
+    System.out.println("Modelo novo:");
+    System.out.println(television.getModel());
+
     System.out.println("Finalizando o sistema...");
   }
 }
