@@ -11,12 +11,20 @@ public class Main {
     System.out.println(warrior.getName() + " é da raça " + warrior.getRace() + " e utiliza " + warrior.getWeapon());
 
     warrior.specialAttack();
-    warrior.move();
-    warrior.attack();
+//    warrior.move();
+//    warrior.attack();
 
     Mage mage = new Mage();
-    mage.move();
-    mage.attack();
+//    mage.move();
+//    mage.attack();
+
+    moveAndAttack(warrior);
+    moveAndAttack(mage);
+  }
+
+  public static void moveAndAttack (PlayableCharacter player) {
+    player.move();
+    player.attack();
   }
 
 }
