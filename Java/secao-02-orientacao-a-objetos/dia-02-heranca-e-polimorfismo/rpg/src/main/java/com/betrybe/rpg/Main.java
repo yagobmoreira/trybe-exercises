@@ -9,6 +9,8 @@ public class Main {
     warrior.setRace("Humano");
 
     System.out.println(warrior.getName() + " é da raça " + warrior.getRace() + " e utiliza " + warrior.getWeapon());
+
+    warrior.specialAttack();
   }
 
 }
