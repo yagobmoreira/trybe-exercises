@@ -28,7 +28,7 @@ public class PlayableCharacter {
       System.out.println("Personagem morreu e não pode se mover.");
       return;
     }
-    System.out.println(name + " está se movendo");
+    System.out.println("O personagem está se movendo");
   }
 
   public void attack() {
