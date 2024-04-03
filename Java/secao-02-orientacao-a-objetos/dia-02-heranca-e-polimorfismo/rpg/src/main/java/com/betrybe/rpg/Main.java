@@ -20,6 +20,9 @@ public class Main {
 
     moveAndAttack(warrior);
     moveAndAttack(mage);
+
+    Barbarian barbarian = new Barbarian();
+    barbarian.move();
   }
 
   public static void moveAndAttack (PlayableCharacter player) {
