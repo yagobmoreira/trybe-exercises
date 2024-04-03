@@ -23,6 +23,11 @@ public class Main {
 
     Barbarian barbarian = new Barbarian();
     barbarian.move();
+
+    Cleric cleric = new Cleric();
+    cleric.heal();
+    cleric.heal("Poção de vida");
+    cleric.heal("Feitiço de luz", 7);
   }
 
   public static void moveAndAttack (PlayableCharacter player) {
