@@ -12,6 +12,12 @@ public class Application {
 
     plugDevice(laptop);
     plugDevice(powerbank);
+
+    ComputerDevice genericDevice = new Laptop("Apple", 256.0, 13.3);
+
+    if (genericDevice instanceof Laptop) {
+      Laptop specifLaptop = (Laptop) genericDevice;
+    }
   }
 
   public static void checkDevice(ComputerDevice device) {
