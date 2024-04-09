@@ -1,8 +1,11 @@
 package com.example.Product.repository;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+@Repository
 public class ProductRepository {
 
+  public String getMessage() {
+    return "Mensagem: produto retornado.";
+  }
 }
