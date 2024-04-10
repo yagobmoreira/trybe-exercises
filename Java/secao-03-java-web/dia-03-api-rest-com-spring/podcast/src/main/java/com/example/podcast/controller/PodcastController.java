@@ -3,9 +3,13 @@ package com.example.podcast.controller;
 import com.example.podcast.model.Podcast;
 import com.example.podcast.service.PodCastService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -39,5 +43,12 @@ public class PodcastController {
   @GetMapping("/search")
   public String searchPodcast(@RequestParam String title) {
     return String.format("Você buscou por Podcasts com título: %s", title);
+  }
+
+  @PostMapping
+  public ResponseEntity<Podcast> createPodcast(@RequestBody Podcast newPodcast) {
+    Podcast savedPodcast = service.savePodcast(newPodcast);
+
+    return ResponseEntity.status(HttpStatus.CREATED).body(savedPodcast);
   }
 }
