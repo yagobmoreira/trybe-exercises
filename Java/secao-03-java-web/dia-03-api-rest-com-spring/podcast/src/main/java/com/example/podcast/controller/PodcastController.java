@@ -1,6 +1,8 @@
 package com.example.podcast.controller;
 
 import com.example.podcast.model.Podcast;
+import com.example.podcast.service.PodCastService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/podcasts")
 public class PodcastController {
+  private PodCastService service;
+
+  @Autowired
+  public PodcastController(PodCastService service) {
+    this.service = service;
+  }
 
   @GetMapping
   public String getRoot() {
@@ -23,10 +31,7 @@ public class PodcastController {
       return ResponseEntity.notFound().build();
     }
 
-    Podcast podcast = new Podcast();
-    podcast.setId(id);
-    podcast.setName("Meu podcast");
-    podcast.setUrl("http://www.meupodcast.com.br");
+    Podcast podcast = service.findPodcastById(id);
 
     return ResponseEntity.ok(podcast);
   }
