@@ -1,6 +1,8 @@
 package com.example.podcast.controller;
 
 import com.example.podcast.model.Podcast;
+import com.example.podcast.model.PodcastCreationDto;
+import com.example.podcast.model.PodcastDto;
 import com.example.podcast.service.PodCastService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -30,14 +32,15 @@ public class PodcastController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<Podcast> getPodcast(@PathVariable Long id) {
+  public ResponseEntity<PodcastDto> getPodcast(@PathVariable Long id) {
     if (id > 1000) {
       return ResponseEntity.notFound().build();
     }
 
     Podcast podcast = service.findPodcastById(id);
+    PodcastDto podcastDto = new PodcastDto(podcast.getId(), podcast.getName(), podcast.getUrl());
 
-    return ResponseEntity.ok(podcast);
+    return ResponseEntity.ok(podcastDto);
   }
 
   @GetMapping("/search")
@@ -46,9 +49,19 @@ public class PodcastController {
   }
 
   @PostMapping
-  public ResponseEntity<Podcast> createPodcast(@RequestBody Podcast newPodcast) {
+  public ResponseEntity<PodcastDto> createPodcast(@RequestBody PodcastCreationDto podcastCreationDto) {
+    Podcast newPodcast = new Podcast();
+    newPodcast.setName(podcastCreationDto.name());
+    newPodcast.setUrl(podcastCreationDto.url());
+
     Podcast savedPodcast = service.savePodcast(newPodcast);
 
-    return ResponseEntity.status(HttpStatus.CREATED).body(savedPodcast);
+    PodcastDto podcastDto = new PodcastDto(
+        savedPodcast.getId(),
+        savedPodcast.getName(),
+        savedPodcast.getUrl()
+    );
+
+    return ResponseEntity.status(HttpStatus.CREATED).body(podcastDto);
   }
 }

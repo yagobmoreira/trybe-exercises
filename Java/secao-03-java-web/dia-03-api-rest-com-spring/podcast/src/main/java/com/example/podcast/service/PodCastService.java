@@ -11,6 +11,7 @@ public class PodCastService {
     podcast.setId(id);
     podcast.setName("Meu podcast");
     podcast.setUrl("http://www.meupodcast.com.br");
+    podcast.setSecretToken("super-secret-token-123");
 
     return podcast;
   }
