@@ -14,6 +14,9 @@ public class ExerciciosStream {
     List<String> palavrasEmCaixaAlta = converterParaCaixaAlta(palavras);
 
     System.out.printf(palavrasEmCaixaAlta.toString());
+
+    int soma = somaNumeros(numeros);
+    System.out.printf(Integer.toString(soma));
   }
 
   public static List<Integer> filtrarNumerosPares(List<Integer> numeros) {
@@ -22,5 +25,9 @@ public class ExerciciosStream {
 
   public static List<String> converterParaCaixaAlta(List<String> palavras) {
     return palavras.stream().map(String::toUpperCase).toList();
+  }
+
+  public static int somaNumeros(List<Integer> numeros) {
+    return numeros.stream().mapToInt(Integer::intValue).sum();
   }
 }
