@@ -17,6 +17,8 @@ public class ExerciciosStream {
 
     int soma = somaNumeros(numeros);
     System.out.printf(Integer.toString(soma));
+
+    System.out.printf(filtrarStringsPorTamanhoMinimo(palavras, 5).toString());
   }
 
   public static List<Integer> filtrarNumerosPares(List<Integer> numeros) {
@@ -29,5 +31,9 @@ public class ExerciciosStream {
 
   public static int somaNumeros(List<Integer> numeros) {
     return numeros.stream().mapToInt(Integer::intValue).sum();
+  }
+
+  public static List<String> filtrarStringsPorTamanhoMinimo(List<String> palavras, Integer tamanho) {
+    return palavras.stream().filter(palavra -> palavra.length() > tamanho).toList();
   }
 }
