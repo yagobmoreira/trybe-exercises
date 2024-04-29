@@ -6,6 +6,7 @@ import com.betrybe.alexandria.controller.dto.BookDetailDto;
 import com.betrybe.alexandria.controller.dto.BookDto;
 import com.betrybe.alexandria.entity.Book;
 import com.betrybe.alexandria.service.BookService;
+import com.betrybe.alexandria.service.exception.AuthorNotFoundException;
 import com.betrybe.alexandria.service.exception.BookDetailNotFoundException;
 import com.betrybe.alexandria.service.exception.BookNotFoundException;
 import com.betrybe.alexandria.service.exception.PublisherNotFoundException;
@@ -116,6 +117,22 @@ public class BookController {
   public BookDto removeBookPublisher(@PathVariable Long bookId) throws BookNotFoundException {
     return BookDto.fromEntity(
         bookService.removeBookPublisher(bookId)
+    );
+  }
+
+  @PutMapping("/{bookId}/authors/{authorId}")
+  public BookDto addBookAuthor(@PathVariable Long bookId, @PathVariable Long authorId)
+      throws AuthorNotFoundException, BookNotFoundException {
+    return BookDto.fromEntity(
+        bookService.addBookAuthor(bookId, authorId)
+    );
+  }
+
+  @DeleteMapping("/{bookId}/authors/{authorId}")
+  public BookDto removeBookAuthor(@PathVariable Long bookId, @PathVariable Long authorId)
+      throws AuthorNotFoundException, BookNotFoundException {
+    return BookDto.fromEntity(
+        bookService.removeBookAuthor(bookId, authorId)
     );
   }
 }
