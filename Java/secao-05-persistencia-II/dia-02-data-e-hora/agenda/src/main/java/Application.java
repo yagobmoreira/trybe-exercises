@@ -1,4 +1,5 @@
 import exemplos.Academia;
+import exemplos.AlertaAniversario;
 import exemplos.HoraRefeicao;
 import exemplos.IdadeEmDias;
 import java.time.LocalDateTime;
@@ -10,7 +11,7 @@ public class Application {
     Academia agenda = new Academia();
     agenda.verificarDiaAcademia();
 
-    LocalDateTime dateTime = LocalDateTime.of(2023, 7, 11, 10, 30, 05); // 2023-07-11T10:30:00
+    LocalDateTime dateTime = LocalDateTime.of(2023, 7, 11, 10, 30, 5); // 2023-07-11T10:30:00
     int year = dateTime.getYear();
     int month = dateTime.getMonth().getValue();
     int dayOfMonth = dateTime.getDayOfMonth();
@@ -38,5 +39,8 @@ public class Application {
 
     IdadeEmDias idade = new IdadeEmDias();
     System.out.println("A quantidade de dias desde o seu nascimento é: " + idade.calcularIdadeEmDias("1993-11-08T12:45:00"));
+
+    AlertaAniversario alerta = new AlertaAniversario();
+    alerta.checkarAniversario();
   }
 }
