@@ -2,6 +2,7 @@ import exemplos.Academia;
 import exemplos.AlertaAniversario;
 import exemplos.HoraRefeicao;
 import exemplos.IdadeEmDias;
+import exemplos.PontoEletronico;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -42,5 +43,8 @@ public class Application {
 
     AlertaAniversario alerta = new AlertaAniversario();
     alerta.checkarAniversario();
+
+    PontoEletronico pontoEletronico = new PontoEletronico();
+    pontoEletronico.marcarHoraExtra();
   }
 }
