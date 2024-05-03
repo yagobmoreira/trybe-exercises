@@ -1,3 +1,5 @@
+package exemplos;
+
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 
@@ -11,10 +13,5 @@ public class Academia {
     } else if (hoje.getDayOfWeek() == DayOfWeek.FRIDAY) {
       System.out.println("Hoje é dia de academia");
     }
-  }
-
-  public static void main(String[] args) {
-    Academia agenda = new Academia();
-    agenda.verificarDiaAcademia();
   }
 }
