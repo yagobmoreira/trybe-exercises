@@ -63,6 +63,21 @@ public class BusLineController {
         return ResponseEntity.status(HttpStatus.OK).body(responseDTO);
     }
 
+    @GetMapping("/code/{code}")
+    public ResponseEntity<ResponseDTO<BusLine>> getLineByCode(@PathVariable String code) {
+        Optional<BusLine> optionalBusLine = busLineService.getEntityByCode(code);
+
+        if(optionalBusLine.isEmpty()) {
+            ResponseDTO<BusLine> responseDTO = new ResponseDTO<>(
+                "Itinerário não encontrado", null);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(responseDTO);
+        }
+
+        ResponseDTO<BusLine> responseDTO = new ResponseDTO<>(
+            "Itinerário recuperado com sucesso", optionalBusLine.get());
+        return ResponseEntity.status(HttpStatus.OK).body(responseDTO);
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<ResponseDTO<BusLine>> getLineById(@PathVariable Long id) {
         Optional<BusLine> optionalBusLine = busLineService.getEntityById(id);
@@ -77,6 +92,7 @@ public class BusLineController {
                 "Itinerário recuperado com sucesso", optionalBusLine.get());
         return ResponseEntity.status(HttpStatus.OK).body(responseDTO);
     }
+
 
     @GetMapping
     public ResponseEntity<ResponseDTO<List<BusLine>>> getAllLines() {

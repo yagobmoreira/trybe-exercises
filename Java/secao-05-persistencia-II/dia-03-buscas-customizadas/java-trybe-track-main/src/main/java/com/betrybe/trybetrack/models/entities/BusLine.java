@@ -18,7 +18,7 @@ public class BusLine {
 
     private String name;
 
-    @OneToMany(mappedBy = "busLine", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "busLine", fetch = FetchType.EAGER)
     private List<Schedule> schedules;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

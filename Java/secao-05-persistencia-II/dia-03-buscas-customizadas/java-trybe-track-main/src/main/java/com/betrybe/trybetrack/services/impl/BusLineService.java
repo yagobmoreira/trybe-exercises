@@ -63,6 +63,8 @@ public class BusLineService implements BaseService<BusLine> {
         return busLineRepository.findById(id);
     }
 
+    public Optional<BusLine> getEntityByCode(String code) { return busLineRepository.findByCode(code); }
+
     public List<BusLine> getAllEntities() {
         return busLineRepository.findAll();
     }
@@ -110,7 +112,7 @@ public class BusLineService implements BaseService<BusLine> {
         return optionalSchedule;
     }
 
-    @Transactional
+//    @Transactional
     public Optional<BusLine> setStationToBusLine(Long busLineId, Long stationId) {
         Optional<BusLine> optionalBusLine = busLineRepository.findById(busLineId);
         if (optionalBusLine.isEmpty()) {
