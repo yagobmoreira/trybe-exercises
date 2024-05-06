@@ -153,4 +153,12 @@ public class BusLineService implements BaseService<BusLine> {
         return Optional.of(updatedBusLine);
     }
 
+    public List<BusLine> getEntitiesFromStationId(Long stationId) {
+        return busLineRepository.findBusLinesFromStationId(stationId);
+    }
+
+    public List<BusLine> getEntitiesWithAvailableSchedules() {
+        return busLineRepository.findBusLinesWithAvailableSchedules();
+    }
+
 }

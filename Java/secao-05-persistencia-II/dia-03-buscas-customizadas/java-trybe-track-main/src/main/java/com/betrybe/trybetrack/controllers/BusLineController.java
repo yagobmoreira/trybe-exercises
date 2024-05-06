@@ -93,6 +93,21 @@ public class BusLineController {
         return ResponseEntity.status(HttpStatus.OK).body(responseDTO);
     }
 
+    @GetMapping("/station/{stationId}")
+    public ResponseEntity<ResponseDTO<List<BusLine>>> getAllLinesFromStationId(@PathVariable Long stationId) {
+        List<BusLine> entities = busLineService.getEntitiesFromStationId(stationId);
+        ResponseDTO<List<BusLine>> responseDTO = new ResponseDTO<>(
+            "Itinerários recuperados com sucesso", entities);
+        return ResponseEntity.status(HttpStatus.OK).body(responseDTO);
+    }
+
+    @GetMapping("/available")
+    public ResponseEntity<ResponseDTO<List<BusLine>>> getAllWithAvailableSchedules() {
+        List<BusLine> entities = busLineService.getEntitiesWithAvailableSchedules();
+        ResponseDTO<List<BusLine>> responseDTO = new ResponseDTO<>(
+            "Itinerários recuperados com sucesso", entities);
+        return ResponseEntity.status(HttpStatus.OK).body(responseDTO);
+    }
 
     @GetMapping
     public ResponseEntity<ResponseDTO<List<BusLine>>> getAllLines() {
