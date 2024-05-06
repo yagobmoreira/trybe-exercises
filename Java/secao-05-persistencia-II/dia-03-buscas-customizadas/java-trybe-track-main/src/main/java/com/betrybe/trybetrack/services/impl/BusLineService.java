@@ -110,6 +110,7 @@ public class BusLineService implements BaseService<BusLine> {
         return optionalSchedule;
     }
 
+    @Transactional
     public Optional<BusLine> setStationToBusLine(Long busLineId, Long stationId) {
         Optional<BusLine> optionalBusLine = busLineRepository.findById(busLineId);
         if (optionalBusLine.isEmpty()) {
