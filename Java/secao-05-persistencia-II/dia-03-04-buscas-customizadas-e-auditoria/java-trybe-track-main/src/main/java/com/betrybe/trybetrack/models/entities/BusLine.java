@@ -1,13 +1,18 @@
 package com.betrybe.trybetrack.models.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
+import java.time.LocalDate;
 import java.util.List;
+import org.hibernate.envers.Audited;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Table(name = "bus_lines")
+@EntityListeners(AuditingEntityListener.class)
+@Audited
 public class BusLine {
 
     @Id
@@ -17,6 +22,14 @@ public class BusLine {
     private String code;
 
     private String name;
+
+    @CreatedDate
+    @JsonProperty("created_date")
+    private LocalDate createDate;
+
+    @LastModifiedDate
+    @JsonProperty("last_modified_date")
+    private LocalDate lastModifiedDate;
 
     @OneToMany(mappedBy = "busLine", fetch = FetchType.EAGER)
     private List<Schedule> schedules;
@@ -70,5 +83,21 @@ public class BusLine {
 
     public List<Station> getStations() {
         return stations;
+    }
+
+    public LocalDate getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(LocalDate createDate) {
+        this.createDate = createDate;
+    }
+
+    public LocalDate getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
+    public void setLastModifiedDate(LocalDate lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 }

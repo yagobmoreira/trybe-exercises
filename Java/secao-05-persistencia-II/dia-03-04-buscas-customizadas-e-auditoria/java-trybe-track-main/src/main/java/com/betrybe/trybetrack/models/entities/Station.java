@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.List;
+import org.hibernate.envers.Audited;
 
 @Entity
 @Table(name = "stations")
+@Audited
 public class Station {
 
     @Id
