@@ -22,6 +22,13 @@ public class TokenService {
         .sign(algorithm);
   }
 
+  public String validateToken(String token) {
+    return JWT.require(algorithm)
+        .build()
+        .verify(token)
+        .getSubject();
+  }
+
   private Instant generateExpiration() {
     return Instant.now()
         .plus(2, ChronoUnit.HOURS);
