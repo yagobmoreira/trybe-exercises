@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,8 +33,8 @@ public class PersonController {
   }
 
   @GetMapping
-  @Secured("ADMIN")
-  public List<PersonDto> getAllPersons() {
+  @PreAuthorize("hasAuthority('ADMIN') or #person.email matches '^[a-zA-Z0-9._-]+@betrybe[.]com$'")
+  public List<PersonDto> getAllPersons(@AuthenticationPrincipal Person person) {
     return personService.getAll().stream()
         .map(PersonDto::fromEntity)
         .collect(Collectors.toList());
