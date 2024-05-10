@@ -17,6 +17,6 @@ public class AuditorAwareUser implements AuditorAware<String> {
     }
 
     Person auditor = (Person) auth.getPrincipal();
-    return Optional.of(auditor.getUsername());
+    return Optional.of(auditor.getEmail());
   }
 }
