@@ -7,9 +7,10 @@ public record PersonCreationDto(
     String email,
     String username,
     String password,
+    Integer age,
     String role) {
 
   public Person toEntity() {
-    return new Person(null, fullname, email, username, password, role);
+    return new Person(null, fullname, email, username, password, age, role);
   }
 }

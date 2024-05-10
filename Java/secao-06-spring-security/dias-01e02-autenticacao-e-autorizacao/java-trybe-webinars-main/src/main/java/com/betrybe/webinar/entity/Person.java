@@ -27,18 +27,26 @@ public class Person implements UserDetails {
   private String username;
   private String password;
   private String role;
+  private Integer age;
 
 
   public Person() {
   }
 
-  public Person(Long id, String fullname, String email, String username, String password, String role) {
+  public Person(Long id,
+      String fullname,
+      String email,
+      String username,
+      String password,
+      Integer age,
+      String role) {
     this.id = id;
     this.fullname = fullname;
     this.email = email;
     this.username = username;
     this.password = password;
     this.role = role;
+    this.age = age;
   }
 
   public Long getId() {
@@ -71,6 +79,14 @@ public class Person implements UserDetails {
 
   public void setRole(String role) {
     this.role = role;
+  }
+
+  public Integer getAge() {
+    return age;
+  }
+
+  public void setAge(Integer age) {
+    this.age = age;
   }
 
   @Override
